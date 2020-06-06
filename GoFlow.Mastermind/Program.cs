@@ -18,31 +18,32 @@ namespace GoFlow.Mastermind
             var attemps = 0;
             var positions = 4;
             var codePegs = (CodePeg[])Enum.GetValues(typeof(CodePeg));
-            var codePegsToGuess = new List<CodePeg>();
-            codePegsToGuess.AddRange(codePegs.Randomize().Take(positions));
+            var codePegsToGuess = new List<CodePeg>() { CodePeg.Red, CodePeg.Black, CodePeg.Green, CodePeg.White};
+            // codePegsToGuess.AddRange(codePegs.Randomize().Take(positions));
 
             foreach (CodePeg codePeg in codePegs)
             {
                 Console.WriteLine($"{codePeg}: {(int)codePeg}");
             }
 
-            while (attemps < 10)
+            while (attemps < 1)
             {
-                var guessCodePegs = new List<CodePeg>();
+                var guessCodePegs = new List<CodePeg>() { CodePeg.Green, CodePeg.Black, CodePeg.Black, CodePeg.White };
 
-                for (int position = 1; position <= positions; position++)
-                {
-                    Console.WriteLine($"Select a color for the position {position}: ");
-                    int.TryParse(Console.ReadLine(), out int guessCodePeg);
-                    try
-                    {
-                        guessCodePegs.Add(codePegs[guessCodePeg]);
-                    }
-                    catch
-                    {
-                        guessCodePegs.Add(codePegs[0]);
-                    }
-                }
+
+                //for (int position = 1; position <= positions; position++)
+                //{
+                //    Console.WriteLine($"Select a color for the position {position}: ");
+                //    int.TryParse(Console.ReadLine(), out int guessCodePeg);
+                //    try
+                //    {
+                //        guessCodePegs.Add(codePegs[guessCodePeg]);
+                //    }
+                //    catch
+                //    {
+                //        guessCodePegs.Add(codePegs[0]);
+                //    }
+                //}
 
                 Mastermind mastermind = new Mastermind(codePegsToGuess);
                 var hints = mastermind.GetHints(guessCodePegs);

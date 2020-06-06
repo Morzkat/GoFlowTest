@@ -14,9 +14,9 @@ namespace GoFlow.Mastermind
 
     enum ResultPeg
     {
+        None,
         Black,
-        White,
-        None
+        White
     }
 
     class Mastermind
@@ -34,27 +34,31 @@ namespace GoFlow.Mastermind
             var hints = new Dictionary<int, ResultPeg>();
             for (int i = 0; i < totalGuessPegs; i++)
             {
+                hints.TryAdd(i, ResultPeg.None); 
                 var hint = GetHint(guessPegs[i], i, hints);
-                hints.Add(hint.Key, hint.Value);
+                hints[hint.Key] = hint.Value;
             }
-            return hints.Values.Randomize();
+            return hints.Values;
+                //.Randomize();
         }
 
         public KeyValuePair<int, ResultPeg> GetHint(CodePeg codePeg, int codePegIndex, Dictionary<int, ResultPeg> hints)
         {
             var totalCodesPegs = codes.Count;
-            int i;
-            for (i = 0; i < totalCodesPegs; i++)
+            var hint = new KeyValuePair<int, ResultPeg>(codePegIndex, hints[codePegIndex]);
+            for (int i = 0; i < totalCodesPegs; i++)
             {
-                if (codePeg == codes[i] && !hints.ContainsKey(i))
+                if (codePeg == codes[i])
                 {
                     if (codePegIndex == i)
                         return new KeyValuePair<int, ResultPeg>(i, ResultPeg.Black);
-
-                    return new KeyValuePair<int, ResultPeg>(i, ResultPeg.White);
+                    
+                    hints.TryGetValue(i, out ResultPeg peg);
+                    if ( peg == ResultPeg.Black) break; 
+                    hint = new KeyValuePair<int, ResultPeg>(i, ResultPeg.White);
                 }
             }
-            return new KeyValuePair<int, ResultPeg>(codePegIndex + i, ResultPeg.None);
+            return hint;
         }
     }
 }
