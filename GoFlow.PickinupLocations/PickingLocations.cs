@@ -38,13 +38,15 @@ namespace GoFlow.InventoryPickingLocations
             var startIndex = 0;
             var locationsCount = locations.Count;
             var pickupLocations = new Dictionary<int, InventoryToPick>();
-            var locationSelected = new Location { Id = 0, QuantityAvailable = 0 };
             var boxQuantityToPick = quantityToPick / defaultUnitOfMeasure;
 
             if (!locations.Any())
                 return new List<InventoryToPick>();
 
-            for (int i = 0; i < locationsCount; i++)
+            locations = locations.OrderByDescending(x => x.QuantityAvailable).ToList();
+            var locationSelected = locations[0];
+
+            for (int i = 1; i < locationsCount; i++)
             {
                 if (locations[i].QuantityAvailable >= quantityToPick)
                 {
@@ -55,13 +57,6 @@ namespace GoFlow.InventoryPickingLocations
                     }
 
                     else if (locations[i].QuantityAvailable < locationSelected.QuantityAvailable)
-                    {
-                        pickupLocations[startIndex] = new InventoryToPick(locations[i].Id, quantityToPick);
-                        locationSelected = locations[i];
-                        continue;
-                    }
-
-                    else if (locationSelected.QuantityAvailable < quantityToPick)
                     {
                         pickupLocations[startIndex] = new InventoryToPick(locations[i].Id, quantityToPick);
                         locationSelected = locations[i];
