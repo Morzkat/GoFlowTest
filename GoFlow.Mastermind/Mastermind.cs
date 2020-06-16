@@ -52,10 +52,12 @@ namespace GoFlow.Mastermind
                 {
                     if (codePegIndex == i)
                         return new KeyValuePair<int, ResultPeg>(i, ResultPeg.Black);
-                    
+
                     hints.TryGetValue(i, out ResultPeg peg);
-                    if ( peg == ResultPeg.Black) break; 
-                    hint = new KeyValuePair<int, ResultPeg>(i, ResultPeg.White);
+                    
+                    if (peg == ResultPeg.Black) continue;
+                    if (peg == ResultPeg.None)
+                        hint = new KeyValuePair<int, ResultPeg>(i, ResultPeg.White);
                 }
             }
             return hint;
