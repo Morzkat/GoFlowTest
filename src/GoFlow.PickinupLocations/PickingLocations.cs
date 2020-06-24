@@ -3,13 +3,13 @@ using System.Linq;
 
 namespace GoFlow.InventoryPickingLocations
 {
-    class Location
+    public class Location
     {
         public int Id { get; set; }
         public int QuantityAvailable { get; set; }
     }
 
-    class InventoryToPick
+    public class InventoryToPick
     {
         public int LocationId { get; set; }
         public int Quantity { get; set; }
@@ -21,7 +21,7 @@ namespace GoFlow.InventoryPickingLocations
         }
     }
 
-    class PickingLocations
+    public class PickingLocations
     {
         private List<Location> locations;
         private int defaultUnitOfMeasure;
@@ -73,6 +73,13 @@ namespace GoFlow.InventoryPickingLocations
         public List<InventoryToPick> FindBestPickUpLocations(List<Location> locations, int quantityToPick, double boxQuantityToPick)
         {
             var bestPickUpLocations = new List<InventoryToPick>();
+
+            if (locations[0].QuantityAvailable > quantityToPick)
+            {
+                bestPickUpLocations.Add(new InventoryToPick(locations[0].Id, quantityToPick));
+                return bestPickUpLocations;
+            }
+
             bestPickUpLocations.Add(new InventoryToPick(locations[0].Id, locations[0].QuantityAvailable));
             quantityToPick -= locations[0].QuantityAvailable;
             boxQuantityToPick -= locations[0].QuantityAvailable / defaultUnitOfMeasure;
@@ -108,14 +115,14 @@ namespace GoFlow.InventoryPickingLocations
 
             foreach (var location in locations)
             {
+                if (quantityToPick < 1)
+                    break;
+
                 if (location.QuantityAvailable > quantityToPick)
                 {
                     bestPickUpLocations.Add(new InventoryToPick(location.Id, quantityToPick));
                     quantityToPick -= location.QuantityAvailable;
                 }
-
-                if (quantityToPick < 1)
-                    break;
             }
 
             return bestPickUpLocations;

@@ -17,7 +17,7 @@ namespace GoFlow.InventoryPickingLocations
             var id = 1;
             var addNewLocation = true;
             var locations = new List<Location>();
-            
+
             Console.WriteLine("Enter the quantity to pick: ");
             int.TryParse(Console.ReadLine(), out int quantityToPick);
 

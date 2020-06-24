@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoFlow.Mastermind", "GoFlow.Mastermind\GoFlow.Mastermind.csproj", "{3A8BFCA1-CC99-47B8-8B50-D2D4EF46A85D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{48AB9E5E-5454-41B3-AA26-873F0404EFD1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoFlow.InventoryPickingLocations", "GoFlow.PickinupLocations\GoFlow.InventoryPickingLocations.csproj", "{886871F2-6C14-41EE-B28F-0950D7C4C06C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C9A8CAEF-C122-402F-8531-4C8CA6E15970}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoFlow.Mastermind", "src\GoFlow.Mastermind\GoFlow.Mastermind.csproj", "{11745F5A-0BC3-47D1-96E0-5C81C80B8CCD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoFlow.InventoryPickingLocations", "src\GoFlow.PickinupLocations\GoFlow.InventoryPickingLocations.csproj", "{E3F8C40C-CE64-429E-A9EF-011386C7ACA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoFlow.Test", "test\Mastermind.Test\GoFlow.Test.csproj", "{158E3B48-A0AF-43C3-9FF7-3903320108D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,17 +19,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3A8BFCA1-CC99-47B8-8B50-D2D4EF46A85D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3A8BFCA1-CC99-47B8-8B50-D2D4EF46A85D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3A8BFCA1-CC99-47B8-8B50-D2D4EF46A85D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3A8BFCA1-CC99-47B8-8B50-D2D4EF46A85D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{886871F2-6C14-41EE-B28F-0950D7C4C06C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{886871F2-6C14-41EE-B28F-0950D7C4C06C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{886871F2-6C14-41EE-B28F-0950D7C4C06C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{886871F2-6C14-41EE-B28F-0950D7C4C06C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11745F5A-0BC3-47D1-96E0-5C81C80B8CCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11745F5A-0BC3-47D1-96E0-5C81C80B8CCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11745F5A-0BC3-47D1-96E0-5C81C80B8CCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11745F5A-0BC3-47D1-96E0-5C81C80B8CCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3F8C40C-CE64-429E-A9EF-011386C7ACA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3F8C40C-CE64-429E-A9EF-011386C7ACA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3F8C40C-CE64-429E-A9EF-011386C7ACA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3F8C40C-CE64-429E-A9EF-011386C7ACA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{158E3B48-A0AF-43C3-9FF7-3903320108D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{158E3B48-A0AF-43C3-9FF7-3903320108D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{158E3B48-A0AF-43C3-9FF7-3903320108D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{158E3B48-A0AF-43C3-9FF7-3903320108D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{11745F5A-0BC3-47D1-96E0-5C81C80B8CCD} = {48AB9E5E-5454-41B3-AA26-873F0404EFD1}
+		{E3F8C40C-CE64-429E-A9EF-011386C7ACA2} = {48AB9E5E-5454-41B3-AA26-873F0404EFD1}
+		{158E3B48-A0AF-43C3-9FF7-3903320108D6} = {C9A8CAEF-C122-402F-8531-4C8CA6E15970}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {115ABFAF-191F-4C32-86CC-60F2053E4B91}

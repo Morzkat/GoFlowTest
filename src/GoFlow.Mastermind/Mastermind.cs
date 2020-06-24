@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace GoFlow.Mastermind
 {
-    enum CodePeg
+    public enum CodePeg
     {
         Black,
         Blue,
@@ -12,14 +12,14 @@ namespace GoFlow.Mastermind
         Yellow,
     }
 
-    enum ResultPeg
+    public enum ResultPeg
     {
         None,
         Black,
         White
     }
 
-    class Mastermind
+    public class Mastermind
     {
         private List<CodePeg> codes;
 
