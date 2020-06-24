@@ -18,7 +18,7 @@ namespace GoFlow.Mastermind
             var attemps = 0;
             var positions = 4;
             var codePegs = (CodePeg[])Enum.GetValues(typeof(CodePeg));
-            var codePegsToGuess = new List<CodePeg>() { CodePeg.Black, CodePeg.Black, CodePeg.Green, CodePeg.White};
+            var codePegsToGuess = new List<CodePeg>() { CodePeg.Red, CodePeg.Black, CodePeg.Green, CodePeg.White };
             // codePegsToGuess.AddRange(codePegs.Randomize().Take(positions));
 
             foreach (CodePeg codePeg in codePegs)
@@ -28,26 +28,21 @@ namespace GoFlow.Mastermind
 
             while (attemps < 1)
             {
-                //var guessCodePegs = new List<CodePeg>() { CodePeg.Red, CodePeg.White, CodePeg.Black, CodePeg.White }; //Black, White, None, None
-                //var guessCodePegs = new List<CodePeg>() { CodePeg.Red, CodePeg.Black, CodePeg.Black, CodePeg.White }; //Black, Black, White, None   
-                //var guessCodePegs = new List<CodePeg>() { CodePeg.Green, CodePeg.Black, CodePeg.Black, CodePeg.White }; //Black, Black, White, White
-                //var guessCodePegs = new List<CodePeg>() { CodePeg.Black, CodePeg.Black, CodePeg.Green, CodePeg.White }; //Black, Black, Black, Black 
-                var guessCodePegs = new List<CodePeg>() { CodePeg.Green, CodePeg.White, CodePeg.Black, CodePeg.Black }; //White, White, White, White 
+                var guessCodePegs = new List<CodePeg>();
 
-
-                //for (int position = 1; position <= positions; position++)
-                //{
-                //    Console.WriteLine($"Select a color for the position {position}: ");
-                //    int.TryParse(Console.ReadLine(), out int guessCodePeg);
-                //    try
-                //    {
-                //        guessCodePegs.Add(codePegs[guessCodePeg]);
-                //    }
-                //    catch
-                //    {
-                //        guessCodePegs.Add(codePegs[0]);
-                //    }
-                //}
+                for (int position = 1; position <= positions; position++)
+                {
+                    Console.WriteLine($"Select a color for the position {position}: ");
+                    int.TryParse(Console.ReadLine(), out int guessCodePeg);
+                    try
+                    {
+                        guessCodePegs.Add(codePegs[guessCodePeg]);
+                    }
+                    catch
+                    {
+                        guessCodePegs.Add(codePegs[0]);
+                    }
+                }
 
                 Mastermind mastermind = new Mastermind(codePegsToGuess);
                 var hints = mastermind.GetHints(guessCodePegs);
